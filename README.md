@@ -4,6 +4,7 @@ Test case to:
 - collect video, audio and network trace
 
 ## What needs to be installed:
+- testray
 - sox
 - wireshark (with ChmodBPF)
 - ffmpeg
