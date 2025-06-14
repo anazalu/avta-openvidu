@@ -1,0 +1,21 @@
+OpenViduCall:
+  Vars:
+    TIME: 20
+    NETWORK_INTERFACE: en0
+    VIDEO_INTERFACE: 1
+  Roles:
+    - Role: desktopChrome,desktopChrome1,desktopChrome2
+      App: desktop
+    - Role: command1
+      App: command
+  Actions:
+    - Given: I navigate and join room with some session name
+      Role: desktopChrome,desktopChrome1,desktopChrome2
+    - When: I start recording audio, video and trace
+      Role: command1
+    - And: I end the session for all users
+      Role: desktopChrome,desktopChrome1,desktopChrome2
+    - Then: I start analyzing audio, video and trace
+      Role: command1
+    - And: I get the current date
+      Role: command1

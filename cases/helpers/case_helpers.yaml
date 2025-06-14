@@ -1,0 +1,43 @@
+Recording:
+  Step: I start recording audio, video and trace
+  Roles:
+    - Role: desktopChrome, desktopChrome1, desktopChrome2
+      App: desktop
+    - Role: command1
+      App: command
+  Actions:
+    - Type: command
+      Role: command1
+      Value: mkdir -p results/audio results/video results/network
+    - Type: minimize
+      Role: desktopChrome
+    - Type: maximize
+      Role: desktopChrome1
+    - Type: minimize
+      Role: desktopChrome2
+    - Type: command
+      Role: command1
+      Value: tshark -i $AND_CLI_NETWORK_INTERFACE$ -w results/network/trace.pcapng -a duration:$AND_CLI_TIME$
+    - Type: command
+      Role: command1
+      Value: sox -r 48000 -t coreaudio default results/audio/raw.wav trim 0 $AND_CLI_TIME$
+    - Type: command
+      Role: command1
+      Value: ffmpeg -v quiet -y -f avfoundation -t $AND_CLI_TIME$ -i "$AND_CLI_VIDEO_INTERFACE$:" results/video/output.mkv
+
+Analysis:
+  Step: I start analyzing audio, video and trace
+  Roles:
+    - Role: command1
+      App: command
+  Actions:
+    - Type: command
+      Value: sox -M input.wav results/audio/raw.wav results/audio/final_output.wav
+    - Type: command
+      Value: audio_handling ev_audio_2 10 $AND_CMD_pwd$/results/audio http://pexq-fb2.tdlbox.com:3000/mos/upload?bandwidth=wideband --start_n 0 --split --skip-channel-detection
+
+CurrentDate:
+  Step: I get the current date
+  Actions:
+    - Type: command
+      Value: date > results/date_start_test.txt

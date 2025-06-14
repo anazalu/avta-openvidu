@@ -1,0 +1,56 @@
+Timeout: 20
+
+Devices:
+  - role: command1
+  - role: desktopChrome
+    browser: chrome
+    capabilities:
+      prefs:
+        profile.default_content_setting_values.notifications: 2
+      chromeOptions:
+        excludeSwitches:
+          - enable-automation
+        args:
+          - disable-notifications
+          - no-sandbox
+          - use-fake-ui-for-media-stream
+          - use-fake-device-for-media-stream
+          - use-file-for-fake-audio-capture=$AND_CMD_pwd$/input.wav
+          - use-file-for-fake-video-capture=$AND_CMD_pwd$/input.mjpeg
+        prefs:
+          credentials_enable_service: false
+          password_manager_enabled: false
+  - role: desktopChrome1
+    browser: chrome
+    capabilities:
+      prefs:
+        profile.default_content_setting_values.notifications: 2
+      chromeOptions:
+        excludeSwitches:
+          - enable-automation
+        args:
+          - disable-notifications
+          - no-sandbox
+          - use-fake-ui-for-media-stream
+          - use-fake-device-for-media-stream
+          - mute-audio
+        prefs:
+          credentials_enable_service: false
+          password_manager_enabled: false
+  - role: desktopChrome2
+    browser: chrome
+    capabilities:
+      prefs:
+        profile.default_content_setting_values.notifications: 2
+      chromeOptions:
+        excludeSwitches:
+          - enable-automation
+        args:
+          - disable-notifications
+          - no-sandbox
+          - use-fake-ui-for-media-stream
+          - use-fake-device-for-media-stream
+          - mute-audio
+        prefs:
+          credentials_enable_service: false
+          password_manager_enabled: false

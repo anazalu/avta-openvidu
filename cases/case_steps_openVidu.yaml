@@ -1,0 +1,15 @@
+StartOpenViduSession:
+  Step: I navigate and join room with some session name
+  Actions:
+    - Type: navigate
+      Value: "https://demos.openvidu.io/openvidu-call/avta-summer-rain/"
+    - Type: click
+      Strategy: css
+      Id: button#join-button
+
+EndOpenViduSession:
+  Step: I end the session for all users
+  Actions:
+    - Type: click
+      Strategy: css
+      Id: button#leave-btn
