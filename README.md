@@ -9,7 +9,12 @@ Test case to:
 - ffmpeg
 
 ## Before the test:
-- add a .mjpeg file to simulate screen sharing
+- add a .mjpeg file to simulate screen sharing (you can make any screen recording and then use the command below)
+```
+ffmpeg -i input.mov output.mjpeg
+```
 
 ## To run the test (better use Terminal):
+```
 testray execute openViduCall
+```
