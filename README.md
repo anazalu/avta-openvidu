@@ -1,5 +1,7 @@
 ## Description
-Test case to record an openVidu call with three users sharing video and collect video, audio and network trace.
+Test case to:
+- record an openVidu call with three users sharing video 
+- collect video, audio and network trace
 
 ## What needs to be installed:
 - sox
